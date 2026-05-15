@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#FAF8F4;--ink:#1A1916;--muted:#6B6860;--accent:#C8551A;
+  --accent-light:#F4EBE4;--border:#E5E2DB;--white:#FFFFFF;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.6;overflow-x:hidden;}
+section{padding:6rem 3rem;}
+.section-label{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;line-height:1.15;letter-spacing:-.02em;max-width:540px;margin-bottom:1.25rem;}
+.section-sub{font-size:1rem;color:var(--muted);font-weight:300;max-width:420px;line-height:1.75;margin-bottom:3rem;}
+
+/* ── PORTFOLIO ── */
+.portfolio-filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.filter-btn{font-size:.8rem;font-weight:500;padding:.4rem 1rem;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--ink);color:var(--white);border-color:var(--ink);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+.portfolio-card{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--white);transition:transform .2s;}
+.portfolio-card:hover{transform:translateY(-4px);}
+.port-thumb{width:100%;height:180px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;position:relative;overflow:hidden;}
+.port-thumb.food{background:#FDF6EE;color:#8B5E3C;}
+.port-thumb.fashion{background:#F0EDF8;color:#534AB7;}
+.port-thumb.beauty{background:#1A1916;color:#ffffff;}
+.port-thumb.kuliner{background:#EDF7F2;color:#0F6E56;}
+.port-thumb.jasa{background:#EBF3FB;color:#185FA5;}
+.port-thumb.event{background:#FAEEDA;color:#633806;}
+.port-thumb-label{position:absolute;bottom:.75rem;right:.75rem;font-family:'DM Sans',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.85);padding:.25rem .6rem;border-radius:100px;color:var(--muted);}
+.port-info{padding:1rem 1.25rem;}
+.port-name{font-size:.9rem;font-weight:500;color:var(--ink);margin-bottom:.25rem;}
+.port-cat{font-size:.75rem;color:var(--muted);}
+.port-tag{display:inline-block;margin-top:.5rem;font-size:.7rem;color:var(--accent);background:var(--accent-light);padding:.2rem .65rem;border-radius:100px;font-weight:500;}
+
+/* ── PRICING ── */
+.pricing-section{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.price-card{border:1px solid var(--border);border-radius:16px;padding:2.25rem;background:var(--cream);transition:transform .2s;}
+.price-card:hover{transform:translateY(-3px);}
+.price-card.featured{background:var(--ink);border-color:var(--ink);}
+.price-badge{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:var(--accent-light);color:var(--accent);padding:.25rem .75rem;border-radius:100px;margin-bottom:1.25rem;}
+.price-card.featured .price-badge{background:rgba(200,85,26,.25);color:#E8855A;}
+.price-name{font-size:1.05rem;font-weight:500;color:var(--ink);margin-bottom:.35rem;}
+.price-card.featured .price-name{color:var(--white);}
+.price-amount{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:400;color:var(--ink);letter-spacing:-.02em;margin:1rem 0 .25rem;line-height:1;}
+.price-card.featured .price-amount{color:var(--white);}
+.price-period{font-size:.8rem;color:var(--muted);}
+.price-card.featured .price-period{color:#888;}
+.price-divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+.price-card.featured .price-divider{border-color:#2E2D2A;}
+.price-features{list-style:none;}
+.price-features li{font-size:.875rem;color:var(--muted);padding:.4rem 0;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5;font-weight:300;}
+.price-card.featured .price-features li{color:#aaa;}
+.price-features li::before{content:'✓';font-size:.75rem;color:var(--accent);flex-shrink:0;margin-top:2px;}
+.price-cta{display:block;text-align:center;margin-top:2rem;padding:.8rem;border-radius:100px;font-size:.875rem;font-weight:500;text-decoration:none;transition:all .2s;border:1px solid var(--border);color:var(--ink);background:transparent;cursor:pointer;width:100%;}
+.price-cta:hover{background:var(--accent-light);border-color:var(--accent-light);color:var(--accent);}
+.price-card.featured .price-cta{background:var(--accent);border-color:var(--accent);color:var(--white);}
+.price-card.featured .price-cta:hover{background:#a8441a;}
+.pricing-note{text-align:center;margin-top:1.75rem;font-size:.8rem;color:var(--muted);}
+
+/* ── FAQ ── */
+.faq-section{border-top:1px solid var(--border);}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start;}
+.faq-list{display:flex;flex-direction:column;gap:.75rem;}
+.faq-item{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--white);}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:1.25rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.925rem;font-weight:500;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:background .2s;}
+.faq-q:hover{background:var(--cream);}
+.faq-icon{font-size:1.1rem;color:var(--accent);flex-shrink:0;transition:transform .25s;}
+.faq-icon.open{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 1.5rem;font-size:.875rem;color:var(--muted);line-height:1.75;font-weight:300;}
+.faq-a.open{max-height:200px;padding:0 1.5rem 1.25rem;}
+
+/* ── CONTACT ── */
+.contact-section{background:var(--ink);border-top:1px solid #2E2D2A;}
+.contact-section .section-label{color:#C8794A;}
+.contact-section .section-title{color:var(--white);}
+.contact-section .section-sub{color:#888;}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-channels{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.channel-card{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border:1px solid #2E2D2A;border-radius:12px;text-decoration:none;transition:border-color .2s,background .2s;}
+.channel-card:hover{border-color:#C8551A;background:rgba(200,85,26,.08);}
+.channel-icon{font-size:1.25rem;color:#C8794A;flex-shrink:0;}
+.channel-label{font-size:.75rem;color:#666;font-weight:400;margin-bottom:.15rem;}
+.channel-value{font-size:.95rem;color:var(--white);font-weight:500;}
+.contact-form{background:#111;border:1px solid #2E2D2A;border-radius:16px;padding:2rem;}
+.form-row{margin-bottom:1.25rem;}
+.form-label{display:block;font-size:.75rem;font-weight:500;color:#888;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;}
+.form-input{width:100%;background:#1A1916;border:1px solid #2E2D2A;border-radius:8px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--white);outline:none;transition:border-color .2s;}
+.form-input:focus{border-color:#C8551A;}
+.form-input::placeholder{color:#444;}
+textarea.form-input{resize:vertical;min-height:100px;}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-submit{width:100%;padding:.9rem;background:var(--accent);color:var(--white);border:none;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:500;cursor:pointer;transition:background .2s;}
+.form-submit:hover{background:#a8441a;}
+.form-note{text-align:center;margin-top:.75rem;font-size:.75rem;color:#555;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ── RESPONSIVE MOBILE ── */
+@media (max-width: 768px) {
+  section { padding: 3.5rem 1.25rem; }
+
+  /* Portfolio */
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-filter { gap: .4rem; }
+  .filter-btn { font-size: .75rem; padding: .35rem .85rem; }
+
+  /* Pricing */
+  .pricing-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .price-card { padding: 1.75rem; }
+
+  /* FAQ */
+  .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .faq-q { font-size: .875rem; padding: 1rem 1.25rem; }
+  .faq-a { padding: 0 1.25rem; }
+  .faq-a.open { padding: 0 1.25rem 1rem; }
+
+  /* Contact */
+  .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-form { padding: 1.5rem; }
+  .form-grid { grid-template-columns: 1fr; gap: 0; }
+
+  /* Typography */
+  .section-title { font-size: clamp(1.6rem, 6vw, 2.25rem); max-width: 100%; }
+  .section-sub { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  section { padding: 3rem 1rem; }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .port-thumb { height: 150px; font-size: 1.1rem; }
+}
+</style>
+
+<!-- ══ SECTION 1: PORTFOLIO ══ -->
+<section id="portfolio">
+  <div class="reveal">
+    <h1 class="section-title">SATUHALAMAN.</h2>
+    <p class="section-label">Hasil kerja jokowi</p>
+    <h2 class="section-title">Website yang sudah kami bangun.</h2>
+    <p class="section-sub">(kalimat manis yang asoy).</p>
+  </div>
+  <div class="portfolio-filter reveal">
+    <button class="filter-btn active" onclick="filterPortfolio(this,'all')">Semua</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'kuliner')">Kuliner & F&B</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'fashion')">Fashion</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'jasa')">Jasa & Profesional</button>
+    <button class="filter-btn" onclick="filterPortfolio(this,'event')">Event</button>
+  </div>
+  <div class="portfolio-grid reveal" id="portfolio-grid">
+    <div class="portfolio-card" data-cat="kuliner">
+      <div class="port-thumb food">Kopi mas rusdi<span class="port-thumb-label">Landing Page</span></div>
+      <div class="port-info"><div class="port-name">Kopi mas rusdi</div><div class="port-cat">Kedai kopi spesialti, JOMOKERTO</div><span class="port-tag">Landing Page</span></div>
+    </div>
+    <div class="portfolio-card" data-cat="fashion">
+      <div class="port-thumb fashion">MAS ANTON WEAR<span class="port-thumb-label">Website</span></div>
+      <div class="port-info"><div class="port-name">MAS ANTON WEAR</div><div class="port-cat">Brand fashion lokal, JOMOKERTO</div><span class="port-tag">Website Bisnis</span></div>
+    </div>
+    <div class="portfolio-card" data-cat="kuliner">
+      <div class="port-thumb food" style="background:#FEF3E8;color:#854F0B;">Dapur UMI REJA<span class="port-thumb-label">Toko Online</span></div>
+      <div class="port-info"><div class="port-name">Dapur Rina Catering</div><div class="port-cat">Catering & katering harian, JOMOKERTO</div><span class="port-tag">Satpam</span></div>
+    </div>
+    <div class="portfolio-card" data-cat="jasa">
+      <div class="port-thumb jasa">ED CORP<span class="port-thumb-label">Profil</span></div>
+      <div class="port-info"><div class="port-name">PUNYA NYA ED Semua</div><div class="port-cat">all in one, goldfinch</div><span class="port-tag">Website Profil</span></div>
+    </div>
+    <div class="portfolio-card" data-cat="event">
+      <div class="port-thumb event">NASABAH SOLITARE<span class="port-thumb-label">Event</span></div>
+      <div class="port-info"><div class="port-name">NASABAH SOLITARE</div><div class="port-cat">NASABAH SOLITARE, MAGGIORE</div><span class="port-tag">Landing Page</span></div>
+    </div>
+    <div class="portfolio-card" data-cat="fashion">
+      <div class="port-thumb beauty">BLACK 4NGG 0<span class="port-thumb-label">Toko</span></div>
+      <div class="port-info"><div class="port-name">BLACK 4NGG 0</div><div class="port-cat">Skincare lokal, JAWA</div><span class="port-tag">Toko Online</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2: PRICING ══ -->
+<section id="harga" class="pricing-section">
+  <div class="reveal">
+    <p class="section-label">Paket & harga</p>
+    <h2 class="section-title">Transparan. Tanpa biaya tersembunyi.</h2>
+    <p class="section-sub">Pilih paket yang sesuai kebutuhan bisnis kamu sekarang.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="price-card reveal">
+      <span class="price-badge">Starter</span>
+      <div class="price-name">Landing Page</div>
+      <div class="price-amount">Rp,,,,K</div>
+      <div class="price-period">sekali bayar · selesai 10-20 menit</div>
+      <hr class="price-divider"/>
+      <ul class="price-features">
+        <li>1 halaman custom</li>
+        <li>Mobile responsive</li>
+        <li>Domain gratis (.my .id)</li>
+        <li>Hosting - tahun</li>
+        <li>2× revisi desain</li>
+        <li>Integrasi WhatsApp (kali)</li>
+      </ul>
+      <button class="price-cta" onclick="scrollToContact()">Pilih Paket Ini</button>
+    </div>
+    <div class="price-card featured reveal" style="transition-delay:.15s">
+      <span class="price-badge">Paling Populer</span>
+      <div class="price-name">Website Bisnis</div>
+      <div class="price-amount">Rp ,,, K</div>
+      <div class="price-period">sekali bayar · selesai 2 menit (kali)</div>
+      <hr class="price-divider"/>
+      <ul class="price-features">
+        <li>- halaman custom</li>
+        <li>Mobile responsive</li>
+        <li>Domain gratis (.my .id)</li>
+        <li>Hosting  tahun</li>
+        <li>Revisi - X</li>
+        <li>SEO dasar</li>
+        <li>Google Analytics (Kali)</li>
+        <li>Support 30 hari (Kali)</li>
+      </ul>
+      <button class="price-cta" onclick="scrollToContact()">Pilih Paket Ini</button>
+    </div>
+    <div class="price-card reveal" style="transition-delay:.3s">
+      <span class="price-badge">Pro</span>
+      <div class="price-name">Satpam</div>
+      <div class="price-amount">Rp 4,5M</div>
+      <div class="price-period">sekali bayar · selamanya</div>
+      <hr class="price-divider"/>
+      <ul class="price-features">
+        <li>Tampan</li>
+        <li>Menawan</li>
+        <li>Asoy</li>
+        <li>berotot</li>
+        <li>rajin ngaji</li>
+        <li>JAWA</li>
+        <li>tinggi</li>
+        <li>Agak item dikit tapi</li>
+      </ul>
+      <button class="price-cta" onclick="scrollToContact()">Pilih Paket Ini</button>
+    </div>
+  </div>
+  <p class="pricing-note reveal">Butuh sesuatu di luar paket? <a href="#kontak" style="color:var(--accent);text-decoration:none;">Ceritakan kebutuhanmu →</a></p>
+</section>
+
+<!-- ══ SECTION 3: FAQ ══ -->
+<section id="faq" class="faq-section">
+  <div class="faq-layout">
+    <div class="reveal">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">Pertanyaan yang sering masuk.</h2>
+      <p class="section-sub">Kalau belum terjawab di sini, langsung tanya via WhatsApp — kami respon cepat.</p>
+      <a href="https://wa.me/6281234567890" style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.875rem;font-weight:500;color:var(--accent);text-decoration:none;">Chat langsung →</a>
+    </div>
+    <div class="faq-list reveal" style="transition-delay:.15s">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Berapa lama proses pengerjaan? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Tergantung paket — </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Berapa kali boleh revisi? <span class="faq-icon">+</span></button>
+        <div class="faq-a">sampai kamu puas.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Saya tidak punya konten, bisa dibantu? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Bisa! kali.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Pembayarannya gimana? <span class="faq-icon">+</span></button>
+        <div class="faq-a">HARUS LUNAS YA GILA AJA LU.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Setelah website jadi, siapa yang pegang akses? <span class="faq-icon">+</span></button>
+        <div class="faq-a">YANG PEGANG ADALAH PRABOWO HAHAHAHAHAHA MAMPUS</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Kalau mau update website nanti, bisa? <span class="faq-icon">+</span></button>
+        <div class="faq-a">urus sendiri udah gede.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4: CONTACT ══ -->
+<section id="kontak" class="contact-section">
+  <div class="contact-layout">
+    <div class="reveal">
+      <p class="section-label">Hubungi kami</p>
+      <h2 class="section-title" style="color:#fff;max-width:360px;">Yuk, mulai ngobrol soal bisnismu.</h2>
+      <p class="section-sub">Konsultasi gratis, tanpa tekanan. Ceritakan kebutuhanmu dan kami kasih rekomendasi terbaik.</p>
+      <div class="contact-channels">
+        <a href="https://wa.me/6281234567890" class="channel-card">
+          <span class="channel-icon">💬</span>
+          <div><div class="channel-label">WhatsApp</div><div class="channel-value">+62 812-3456-7890</div></div>
+        </a>
+        <a href="mailto:halo@satuhalaman.id" class="channel-card">
+          <span class="channel-icon">✉</span>
+          <div><div class="channel-label">Email</div><div class="channel-value">halo@satuhalaman.id</div></div>
+        </a>
+        <a href="https://instagram.com/satuhalaman" class="channel-card">
+          <span class="channel-icon">📷</span>
+          <div><div class="channel-label">Instagram</div><div class="channel-value">@satuhalaman</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.2s">
+      <div class="contact-form">
+        <div class="form-grid">
+          <div class="form-row">
+            <label class="form-label">Nama kamu</label>
+            <input class="form-input" type="text" placeholder="Budi Santoso"/>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Nomor WhatsApp</label>
+            <input class="form-input" type="text" placeholder="08xx-xxxx-xxxx"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Nama bisnis / brand</label>
+          <input class="form-input" type="text" placeholder="Kopi Nusaku"/>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Paket yang interessados</label>
+          <select class="form-input form-select">
+            <option value="">Pilih paket...</option>
+            <option>Landing Page — Rp K</option>
+            <option>Website Bisnis — Rp jt</option>
+            <option>Toko Online — Rp </option>
+            <option>Belum tahu, mau konsultasi dulu</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Ceritakan bisnismu (opsional)</label>
+          <textarea class="form-input" placeholder="Bisnis saya bergerak di bidang..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(this)">Kirim & Mulai Konsultasi</button>
+        <p class="form-note">Kami balas dalam 1×24 jam · Tidak ada spam</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling;
+  const icon=btn.querySelector('.faq-icon');
+  const isOpen=ans.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(a=>{
+    a.classList.remove('open');
+    a.previousElementSibling.querySelector('.faq-icon').classList.remove('open');
+  });
+  if(!isOpen){ans.classList.add('open');icon.classList.add('open');}
+}
+
+function filterPortfolio(btn,cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.portfolio-card').forEach(card=>{
+    card.style.display=(cat==='all'||card.dataset.cat===cat)?'block':'none';
+  });
+}
+
+function scrollToContact(){
+  document.getElementById('kontak').scrollIntoView({behavior:'smooth'});
+}
+
+function handleSubmit(btn){
+  btn.textContent='Terkirim! Kami akan segera menghubungi kamu.';
+  btn.style.background='#2E7D32';
+  btn.disabled=true;
+}
+</script>
