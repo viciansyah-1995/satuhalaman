@@ -181,6 +181,47 @@
       background: rgba(255,255,255,0.9);
     }
 
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.8);
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-toggle-line {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-toggle-line::before,
+    .nav-toggle-line::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 20px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-toggle-line::before { top: -6px; }
+    .nav-toggle-line::after { top: 6px; }
+
+    .nav-wrap.open .nav-toggle-line { background: transparent; }
+    .nav-wrap.open .nav-toggle-line::before { top: 0; transform: rotate(45deg); }
+    .nav-wrap.open .nav-toggle-line::after { top: 0; transform: rotate(-45deg); }
+
     .nav-links a:hover {
       color: var(--text);
     }
@@ -798,12 +839,6 @@
         grid-template-columns: 1fr;
       }
 
-      .nav-wrap {
-        grid-template-columns: 1fr;
-        justify-items: center;
-        padding: 14px 0;
-      }
-
       .hero-points,
       .contact-stat-grid { grid-template-columns: 1fr; }
       .contact-wrap { min-height: unset; }
@@ -811,21 +846,49 @@
 
     @media (max-width: 720px) {
       .nav-wrap {
-        min-height: auto;
+        grid-template-columns: 1fr auto;
+        align-items: center;
         gap: 12px;
+        min-height: auto;
+        padding: 14px 0;
+      }
+
+      .brand {
+        grid-column: 1 / 2;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        grid-column: 2 / 3;
+        justify-self: end;
+      }
+
+      .nav-cta {
+        display: none;
       }
 
       .nav-links {
+        display: none;
+        grid-column: 1 / -1;
         width: 100%;
-        justify-content: center;
-        border-radius: 22px;
-        padding: 10px;
+        margin: 0;
+        padding: 12px;
+        border-radius: 20px;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: stretch;
+        background: rgba(255,255,255,0.92);
+        box-shadow: 0 14px 32px rgba(0,0,0,0.08);
+      }
+
+      .nav-wrap.open .nav-links {
+        display: flex;
       }
 
       .nav-links a {
-        flex: 1 1 calc(50% - 8px);
-        text-align: center;
-        min-width: 120px;
+        width: 100%;
+        text-align: left;
+        padding: 12px 14px;
       }
 
       .section { padding: 72px 0; }
@@ -853,14 +916,18 @@
         <span>SatuHalaman</span>
       </a>
 
-      <nav class="nav-links">
-        <a href="#portfolio">Portfolio</a>
-        <a href="#harga">Harga</a>
-        <a href="#faq">FAQ</a>
-        <a href="#kontak">Kontak</a>
+      <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="site-nav" onclick="toggleNav()">
+        <span class="nav-toggle-line"></span>
+      </button>
+
+      <nav class="nav-links" id="site-nav">
+        <a href="#portfolio" onclick="closeNav()">Portfolio</a>
+        <a href="#harga" onclick="closeNav()">Harga</a>
+        <a href="#faq" onclick="closeNav()">FAQ</a>
+        <a href="#kontak" onclick="closeNav()">Kontak</a>
       </nav>
 
-      <a class="btn btn-primary" href="#kontak">Mulai Sekarang</a>
+      <a class="btn btn-primary nav-cta" href="#kontak">Mulai Sekarang</a>
     </div>
   </header>
 
@@ -1220,6 +1287,20 @@
 
     function scrollToContact() {
       document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleNav() {
+      const navWrap = document.querySelector('.nav-wrap');
+      const toggle = document.querySelector('.nav-toggle');
+      navWrap.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', navWrap.classList.contains('open') ? 'true' : 'false');
+    }
+
+    function closeNav() {
+      const navWrap = document.querySelector('.nav-wrap');
+      const toggle = document.querySelector('.nav-toggle');
+      navWrap.classList.remove('open');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
     }
 
     document.getElementById('current-year').textContent = new Date().getFullYear();
