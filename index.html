@@ -121,9 +121,9 @@
     }
 
     .nav-wrap {
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
       gap: 20px;
       min-height: 78px;
     }
@@ -135,6 +135,7 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.03em;
+      min-width: 0;
     }
 
     .brand-mark {
@@ -155,10 +156,29 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      gap: 14px;
       color: var(--muted);
       font-size: 14px;
       font-weight: 500;
+      padding: 8px 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.55);
+      border-radius: 999px;
+      width: fit-content;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.9);
     }
 
     .nav-links a:hover {
@@ -378,7 +398,7 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
       align-items: stretch;
     }
@@ -767,15 +787,21 @@
       .hero-card,
       .faq-layout,
       .portfolio-grid,
-      .pricing-grid,
       .contact-grid {
         grid-template-columns: 1fr 1fr;
       }
 
       .hero-card,
       .faq-layout,
-      .contact-grid {
+      .contact-grid,
+      .pricing-grid {
         grid-template-columns: 1fr;
+      }
+
+      .nav-wrap {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 14px 0;
       }
 
       .hero-points,
@@ -786,14 +812,20 @@
     @media (max-width: 720px) {
       .nav-wrap {
         min-height: auto;
-        padding: 16px 0;
-        align-items: flex-start;
-        flex-direction: column;
+        gap: 12px;
       }
 
       .nav-links {
-        gap: 14px;
-        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        border-radius: 22px;
+        padding: 10px;
+      }
+
+      .nav-links a {
+        flex: 1 1 calc(50% - 8px);
+        text-align: center;
+        min-width: 120px;
       }
 
       .section { padding: 72px 0; }
@@ -809,6 +841,7 @@
       .hero-actions,
       .contact-cta { flex-direction: column; }
       .footer-wrap { align-items: flex-start; }
+      .wa-float { right: 14px; bottom: 14px; padding: 12px 14px; }
     }
   </style>
 </head>
