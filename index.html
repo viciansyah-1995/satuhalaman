@@ -10,13 +10,6 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f7f5f0;
-      color: #1f1f1f;
-      line-height: 1.6;
-    }
 
     :root {
       --bg: #f7f5f0;
@@ -28,14 +21,23 @@
       --primary-dark: #9f471d;
       --border: #e7e1d7;
       --dark: #161616;
+      --dark-soft: #222222;
       --radius: 20px;
       --shadow: 0 18px 50px rgba(26, 22, 18, 0.08);
       --container: 1180px;
     }
 
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
     img { display: block; width: 100%; }
     a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
+    button { font: inherit; }
 
     .container {
       width: min(var(--container), calc(100% - 32px));
@@ -51,7 +53,7 @@
       flex-direction: column;
       gap: 12px;
       margin-bottom: 40px;
-      max-width: 640px;
+      max-width: 680px;
     }
 
     .eyebrow {
@@ -73,11 +75,94 @@
       margin: 0;
       color: var(--muted);
       font-size: 16px;
-      max-width: 560px;
+      max-width: 580px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 14px 22px;
+      border: 1px solid transparent;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      border-color: #d7cec0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 245, 240, 0.88);
+      border-bottom: 1px solid rgba(231, 225, 215, 0.9);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .hero {
-      padding: 72px 0 24px;
+      padding: 48px 0 24px;
     }
 
     .hero-card {
@@ -123,38 +208,6 @@
       flex-wrap: wrap;
       gap: 12px;
       margin-bottom: 28px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 14px 22px;
-      border: 1px solid transparent;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: var(--primary-dark); }
-
-    .btn-secondary {
-      background: transparent;
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      background: #fff;
-      border-color: #d7cec0;
     }
 
     .hero-points {
@@ -379,7 +432,7 @@
 
     .faq-layout {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 28px;
       align-items: start;
     }
@@ -415,6 +468,7 @@
       color: var(--primary);
       font-size: 24px;
       line-height: 1;
+      transition: transform 0.2s ease;
     }
 
     .faq-answer {
@@ -428,23 +482,51 @@
     .faq-item.open .faq-question span:last-child { transform: rotate(45deg); }
 
     .contact-wrap {
-      background: var(--dark);
+      background: linear-gradient(180deg, var(--dark) 0%, #1c1c1c 100%);
       color: #fff;
+      min-height: 860px;
+      display: flex;
+      align-items: center;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      align-items: start;
-      max-width: 720px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
     }
 
-    .contact-card {
+    .contact-card,
+    .contact-side {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 24px;
-      padding: 28px;
+      padding: 32px;
+    }
+
+    .contact-card p,
+    .contact-card li,
+    .contact-muted,
+    .contact-side p,
+    .contact-side li {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .contact-list,
+    .contact-extra {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-list li,
+    .contact-extra li {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
     }
 
     .contact-cta {
@@ -492,95 +574,83 @@
       object-fit: cover;
     }
 
-    .form-card {
-      display: none;
+    .contact-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
     }
 
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-row {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .form-row label {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
-      color: #fff;
-      outline: none;
-    }
-
-    .form-input::placeholder { color: rgba(255,255,255,0.4); }
-    .form-input:focus { border-color: #ffb18a; }
-    textarea.form-input { min-height: 120px; resize: vertical; }
-
-    .contact-card p,
-    .contact-card li,
-    .form-note,
-    .contact-muted {
-      color: rgba(255,255,255,0.72);
-    }
-
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 24px 0 0;
-      display: grid;
-      gap: 14px;
-    }
-
-    .contact-list li {
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
+    .contact-side-card {
+      padding: 20px;
+      border-radius: 20px;
       background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .form-grid {
+    .contact-side-title {
+      margin: 0 0 10px;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .contact-side-text {
+      margin: 0;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+
+    .contact-stat-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
     }
 
-    .form-row {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 16px;
+    .contact-stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .form-row label {
-      font-size: 13px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.85);
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.06);
+    .contact-stat strong {
+      display: block;
       color: #fff;
-      outline: none;
+      font-size: 20px;
+      margin-bottom: 4px;
     }
 
-    .form-input::placeholder { color: rgba(255,255,255,0.4); }
-    .form-input:focus { border-color: #ffb18a; }
-    textarea.form-input { min-height: 120px; resize: vertical; }
+    .contact-stat span {
+      color: rgba(255,255,255,0.68);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 26px 0 40px;
+      background: var(--dark);
+      color: rgba(255,255,255,0.78);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
 
     .reveal {
       opacity: 0;
@@ -596,9 +666,9 @@
     @media (max-width: 1024px) {
       .hero-card,
       .faq-layout,
-      .contact-grid,
       .portfolio-grid,
-      .pricing-grid {
+      .pricing-grid,
+      .contact-grid {
         grid-template-columns: 1fr 1fr;
       }
 
@@ -608,26 +678,60 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-points { grid-template-columns: 1fr; }
+      .hero-points,
+      .contact-stat-grid { grid-template-columns: 1fr; }
+      .contact-wrap { min-height: unset; }
     }
 
     @media (max-width: 720px) {
+      .nav-wrap {
+        min-height: auto;
+        padding: 16px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
       .section { padding: 72px 0; }
-      .hero { padding-top: 40px; }
+      .hero { padding-top: 32px; }
       .hero-card { padding: 22px; }
       .hero-mini,
-      .form-grid,
       .portfolio-grid,
-      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-grid,
+      .contact-stat-grid { grid-template-columns: 1fr; }
       .title { font-size: 30px; }
       .hero-title { font-size: 40px; }
       .btn { width: 100%; }
-      .hero-actions { flex-direction: column; }
+      .hero-actions,
+      .contact-cta { flex-direction: column; }
+      .footer-wrap { align-items: flex-start; }
     }
   </style>
 </head>
 <body>
-  <main>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">
+        <span class="brand-mark">SH</span>
+        <span>SatuHalaman</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#harga">Harga</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+
+      <a class="btn btn-primary" href="#kontak">Mulai Sekarang</a>
+    </div>
+  </header>
+
+  <main id="top">
     <section class="hero">
       <div class="container">
         <div class="hero-card reveal">
@@ -831,40 +935,48 @@
         <div class="section-head reveal" style="margin-bottom:0;">
           <span class="eyebrow">FAQ</span>
           <h2 class="title">Pertanyaan yang paling sering ditanyain.</h2>
-          <p class="subtitle">Kalau masih ada yang belum jelas, tinggal lanjut chat. Biar kita bahas sesuai kebutuhan project kamu.</p>
+          <p class="subtitle">Biar calon client lebih cepat paham proses kerja, FAQ ini aku rapihin dengan jawaban yang pendek, jelas, dan enak dibaca.</p>
         </div>
 
         <div class="faq-list reveal">
           <div class="faq-item open">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Berapa lama proses pengerjaannya?</span>
+              <span>Berapa lama proses pengerjaan?</span>
               <span>+</span>
             </button>
-            <div class="faq-answer">Tergantung scope. Landing page sederhana bisa lebih cepat, sedangkan website bisnis dengan banyak section butuh waktu lebih panjang.</div>
+            <div class="faq-answer">Landing page biasanya selesai sekitar 10 menit. Untuk website bisnis, estimasinya sekitar 1–3 hari, tergantung isi dan jumlah halaman.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Kalau belum punya copywriting atau foto, bisa dibantu?</span>
+              <span>Saya tidak punya konten, bisa dibantu?</span>
               <span>+</span>
             </button>
-            <div class="faq-answer">Bisa. Untuk awal, kita bisa pakai dummy content dulu, lalu diganti pelan-pelan dengan aset final dari brand kamu.</div>
+            <div class="faq-answer">Bisa. Kita bisa mulai dari struktur dan dummy content dulu, lalu pelan-pelan isi dengan materi final dari bisnis kamu.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Apakah website nanti bisa dibuka nyaman dari HP?</span>
+              <span>Pembayarannya gimana?</span>
               <span>+</span>
             </button>
-            <div class="faq-answer">Iya. Struktur yang aku rapihin sekarang juga sudah dibuat dengan pendekatan responsive supaya nyaman di layar kecil.</div>
+            <div class="faq-answer">Tenang, sistemnya jadi dulu baru bayar. Jadi kamu bisa lihat hasilnya lebih dulu sebelum lanjut ke pembayaran.</div>
           </div>
 
           <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Setelah jadi, apakah masih bisa direvisi?</span>
+              <span>Setelah website jadi, siapa yang pegang akses?</span>
               <span>+</span>
             </button>
-            <div class="faq-answer">Bisa. Revisi minor biasanya masuk dalam paket, sedangkan revisi besar tinggal disesuaikan dengan perubahan scope.</div>
+            <div class="faq-answer">Kamu yang pegang akses. Jadi website tetap aman di tangan kamu sendiri, bukan ditahan oleh pihak lain.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+              <span>Kalau mau update website nanti, bisa?</span>
+              <span>+</span>
+            </button>
+            <div class="faq-answer">Bisa. Kalau nanti ada perubahan konten, penambahan section, atau update ringan lainnya, tinggal lanjut diskusi lagi.</div>
           </div>
         </div>
       </div>
@@ -875,7 +987,8 @@
         <div class="contact-card reveal">
           <span class="eyebrow">Kontak</span>
           <h2 class="title" style="color:#fff; margin-top:10px;">Punya ide website? Gas diskusi.</h2>
-          <p class="contact-muted">Bagian form bawah sudah aku take out. Jadi section penutup sekarang lebih clean, fokus ke call to action dan info kontak utama.</p>
+          <p class="contact-muted">Section kontak aku bikin lebih panjang di tampilan website biar penutup halaman terasa lebih kuat. Jadi bagian bawah tidak pendek dan tetap punya bobot visual yang pas.</p>
+
           <ul class="contact-list">
             <li><strong>WhatsApp</strong><br />+62 812-3456-7890</li>
             <li><strong>Email</strong><br />halo@satuhalaman.id</li>
@@ -887,15 +1000,63 @@
             <a class="btn btn-secondary" href="mailto:halo@satuhalaman.id">Kirim Email</a>
           </div>
 
-          <p class="contact-note">Bisa nanti ditambah tombol ke Instagram, form modal, atau direct booking kalau dibutuhin.</p>
+          <p class="contact-note">Kalau nanti mau ditambah form, Instagram, atau tombol booking, section ini sudah siap jadi area CTA utama.</p>
 
           <div class="contact-image">
             <img src="https://picsum.photos/1200/600?random=20" alt="Dummy image kontak" />
           </div>
         </div>
+
+        <aside class="contact-side reveal">
+          <div class="contact-side-card">
+            <h3 class="contact-side-title">Kenapa section kontak dibikin lebih panjang?</h3>
+            <p class="contact-side-text">Supaya halaman penutup terasa lebih niat, lebih premium, dan tetap seimbang secara visual setelah form dihapus.</p>
+          </div>
+
+          <div class="contact-stat-grid">
+            <div class="contact-stat">
+              <strong>10 Menit</strong>
+              <span>Estimasi cepat untuk landing page sederhana</span>
+            </div>
+            <div class="contact-stat">
+              <strong>1–3 Hari</strong>
+              <span>Estimasi pengerjaan website bisnis</span>
+            </div>
+            <div class="contact-stat">
+              <strong>Custom</strong>
+              <span>Tampilan mengikuti konteks brand</span>
+            </div>
+            <div class="contact-stat">
+              <strong>Full Access</strong>
+              <span>Akses website tetap di tangan client</span>
+            </div>
+          </div>
+
+          <ul class="contact-extra">
+            <li><strong>Proses simpel</strong><br />Diskusi singkat, eksekusi cepat, hasil langsung bisa dicek.</li>
+            <li><strong>Fleksibel revisi</strong><br />Kalau ada update konten atau perapihan minor, masih bisa lanjut dibahas.</li>
+            <li><strong>Fokus konversi</strong><br />Bukan cuma bagus dilihat, tapi juga enak dipakai calon customer.</li>
+          </ul>
+        </aside>
       </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <div>
+        <div class="footer-brand">SatuHalaman</div>
+        <div>Website bisnis yang rapi, cepat tayang, dan siap dipakai jualan.</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#harga">Harga</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
@@ -930,7 +1091,6 @@
     function scrollToContact() {
       document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
     }
-
   </script>
 </body>
 </html>
