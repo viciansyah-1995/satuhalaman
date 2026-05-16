@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SatuHalaman — Landing Page Bisnis</title>
-  <link rel="icon" type="image/jpeg" href="./assets/logo-satuhalaman.jpg" />
+  <link rel="icon" type="image/jpeg" href="./assets/brand/logo-satuhalaman.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -415,15 +415,19 @@
     }
 
     .portfolio-card {
+      display: block;
       overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      transition: transform .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .portfolio-card:hover { transform: translateY(-6px); }
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 56px rgba(39, 25, 14, 0.12);
+    }
 
     .portfolio-thumb {
       position: relative;
@@ -922,7 +926,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="#top" class="brand">
-        <span class="brand-mark"><img src="./assets/logo-satuhalaman.jpg" alt="Logo SatuHalaman" /></span>
+        <span class="brand-mark"><img src="./assets/brand/logo-satuhalaman.jpg" alt="Logo SatuHalaman" /></span>
         <span>SatuHalaman</span>
       </a>
 
@@ -975,7 +979,7 @@
 
           <div class="hero-visual">
             <div class="hero-image">
-              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Preview landing page dan workflow website bisnis" />
+              <img src="./assets/images/hero/hero-main.png" alt="Preview landing page dan workflow website bisnis" />
             </div>
 
             <div class="hero-mini">
@@ -991,24 +995,7 @@
           </div>
         </div>
 
-        <div class="stats-strip reveal">
-          <div class="stat-card">
-            <strong>10 Menit</strong>
-            <span>Estimasi landing page sederhana siap tayang.</span>
-          </div>
-          <div class="stat-card">
-            <strong>1–3 Hari</strong>
-            <span>Untuk project web yang lebih lengkap dan fleksibel.</span>
-          </div>
-          <div class="stat-card">
-            <strong>Full Access</strong>
-            <span>Akses website tetap di tangan client.</span>
-          </div>
-          <div class="stat-card">
-            <strong>Responsive</strong>
-            <span>Tampilan aman di desktop dan mobile.</span>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -1022,84 +1009,83 @@
 
         <div class="filter-row reveal">
           <button class="filter-btn active" onclick="filterPortfolio(this, 'all')">Semua</button>
-          <button class="filter-btn" onclick="filterPortfolio(this, 'kuliner')">Kuliner</button>
-          <button class="filter-btn" onclick="filterPortfolio(this, 'fashion')">Fashion</button>
-          <button class="filter-btn" onclick="filterPortfolio(this, 'jasa')">Jasa</button>
-          <button class="filter-btn" onclick="filterPortfolio(this, 'event')">Event</button>
+          <button class="filter-btn" onclick="filterPortfolio(this, 'landing-page')">Landing Page</button>
+          <button class="filter-btn" onclick="filterPortfolio(this, 'website')">Website</button>
+          <button class="filter-btn" onclick="filterPortfolio(this, 'ecommerce')">E-Commerce</button>
         </div>
 
         <div class="portfolio-grid reveal" id="portfolio-grid">
-          <article class="portfolio-card" data-cat="kuliner">
+          <a class="portfolio-card" data-cat="website" href="https://construction-auk.pages.dev/" target="_blank" rel="noopener noreferrer">
             <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website bisnis untuk kedai kopi" />
+              <img src="./assets/images/portfolio/borneo-konstruksi-raya.jpg" alt="Website kontraktor sipil Kalimantan" />
+              <span class="portfolio-label">Website</span>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Borneo Konstruksi Raya</h3>
+              <p class="portfolio-meta">Website company profile kontraktor sipil yang menonjolkan layanan heavy civil works, work packages, dan pendekatan proyek lapangan yang lebih profesional.</p>
+              <span class="portfolio-tag">Website • Construction</span>
+            </div>
+          </a>
+
+          <a class="portfolio-card" data-cat="ecommerce" href="https://fisheries.pages.dev/" target="_blank" rel="noopener noreferrer">
+            <div class="portfolio-thumb">
+              <img src="./assets/images/portfolio/kalimantan-fresh-fisheries.jpg" alt="Website supplier seafood dan cold chain" />
+              <span class="portfolio-label">E-Commerce</span>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Kalimantan Fresh Fisheries</h3>
+              <p class="portfolio-meta">Website katalog seafood supplier yang cocok untuk tampilkan species lot, cold chain process, dan mendorong buyer kirim permintaan stock.</p>
+              <span class="portfolio-tag">E-Commerce • Fisheries</span>
+            </div>
+          </a>
+
+          <a class="portfolio-card" data-cat="website" href="https://mining-services.pages.dev/" target="_blank" rel="noopener noreferrer">
+            <div class="portfolio-thumb">
+              <img src="./assets/images/portfolio/borneo-mining-contractor.jpg" alt="Website mining services contractor" />
+              <span class="portfolio-label">Website</span>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Borneo Mining Contractor</h3>
+              <p class="portfolio-meta">Website profil perusahaan tambang untuk menampilkan service layers, fleet registry, dan kekuatan operasional secara lebih meyakinkan.</p>
+              <span class="portfolio-tag">Website • Mining Services</span>
+            </div>
+          </a>
+
+          <a class="portfolio-card" data-cat="ecommerce" href="https://gunung-porang.pages.dev/" target="_blank" rel="noopener noreferrer">
+            <div class="portfolio-thumb">
+              <img src="./assets/images/portfolio/aryo-porang-indonesia.jpg" alt="Website export porang rice" />
+              <span class="portfolio-label">E-Commerce</span>
+            </div>
+            <div class="portfolio-content">
+              <h3 class="portfolio-title">Aryo Porang Indonesia</h3>
+              <p class="portfolio-meta">Website produk ekspor porang yang cocok untuk menampilkan spesifikasi, sertifikasi, dan ajakan inquiry dari buyer domestik maupun internasional.</p>
+              <span class="portfolio-tag">E-Commerce • Export Product</span>
+            </div>
+          </a>
+
+          <a class="portfolio-card" data-cat="landing-page" href="https://rinjani-tour.pages.dev/" target="_blank" rel="noopener noreferrer">
+            <div class="portfolio-thumb">
+              <img src="./assets/images/portfolio/rinjani-trekker.jpg" alt="Landing page paket tour Rinjani" />
               <span class="portfolio-label">Landing Page</span>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Kopi Mas Rusdi</h3>
-              <p class="portfolio-meta">Website promo kedai kopi dengan fokus menu unggulan, cerita brand, dan CTA order cepat.</p>
-              <span class="portfolio-tag">Kuliner & F&B</span>
+              <h3 class="portfolio-title">Rinjani Trekker</h3>
+              <p class="portfolio-meta">Landing page wisata pendakian yang fokus ke itinerary, paket trip, kredibilitas guide, dan tombol booking yang jelas.</p>
+              <span class="portfolio-tag">Landing Page • Tour & Travel</span>
             </div>
-          </article>
+          </a>
 
-          <article class="portfolio-card" data-cat="fashion">
+          <a class="portfolio-card" data-cat="website" href="https://amanahkatering.my.id/" target="_blank" rel="noopener noreferrer">
             <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website brand fashion lokal" />
-              <span class="portfolio-label">Website Brand</span>
+              <img src="./assets/images/portfolio/amanah-katering.jpg" alt="Website katering sehat halal" />
+              <span class="portfolio-label">Website</span>
             </div>
             <div class="portfolio-content">
-              <h3 class="portfolio-title">Anton Wear</h3>
-              <p class="portfolio-meta">Website brand fashion lokal dengan layout katalog, cerita brand, dan gaya visual yang lebih bersih.</p>
-              <span class="portfolio-tag">Fashion</span>
+              <h3 class="portfolio-title">Amanah Katering</h3>
+              <p class="portfolio-meta">Website brand katering sehat halal yang lebih cocok untuk bangun trust lewat pesan utama, identitas halal, dan positioning brand yang kuat.</p>
+              <span class="portfolio-tag">Website • Catering Brand</span>
             </div>
-          </article>
-
-          <article class="portfolio-card" data-cat="kuliner">
-            <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website catering dan makanan" />
-              <span class="portfolio-label">Promo Catering</span>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Dapur Rina Catering</h3>
-              <p class="portfolio-meta">Landing page untuk menampilkan paket catering, foto menu, dan kontak pemesanan yang jelas.</p>
-              <span class="portfolio-tag">Kuliner</span>
-            </div>
-          </article>
-
-          <article class="portfolio-card" data-cat="jasa">
-            <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website company profile jasa profesional" />
-              <span class="portfolio-label">Profil Bisnis</span>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">ED Corp</h3>
-              <p class="portfolio-meta">Company profile yang lebih kredibel untuk jasa profesional, presentasi klien, dan kebutuhan branding.</p>
-              <span class="portfolio-tag">Jasa Profesional</span>
-            </div>
-          </article>
-
-          <article class="portfolio-card" data-cat="event">
-            <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website event dan registrasi" />
-              <span class="portfolio-label">Event Page</span>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Nasabah Solitare</h3>
-              <p class="portfolio-meta">Landing page event untuk jadwal acara, profil pembicara, dan registrasi peserta.</p>
-              <span class="portfolio-tag">Event</span>
-            </div>
-          </article>
-
-          <article class="portfolio-card" data-cat="fashion">
-            <div class="portfolio-thumb">
-              <img src="https://images.pexels.com/photos/6621468/pexels-photo-6621468.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website produk beauty dan skincare" />
-              <span class="portfolio-label">Catalog Page</span>
-            </div>
-            <div class="portfolio-content">
-              <h3 class="portfolio-title">Black Anggo</h3>
-              <p class="portfolio-meta">Website produk beauty dengan visual lebih clean untuk bantu tampil lebih premium dan mudah dipahami.</p>
-              <span class="portfolio-tag">Beauty & Fashion</span>
-            </div>
-          </article>
+          </a>
         </div>
       </div>
     </section>
@@ -1194,13 +1180,7 @@
             <div class="faq-answer">Kamu yang pegang akses. Jadi website tetap aman di tangan kamu sendiri dan tidak ditahan pihak lain.</div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-              <span>Kalau mau update website nanti, bisa?</span>
-              <span>+</span>
-            </button>
-            <div class="faq-answer">Bisa. Kalau nanti ada perubahan konten, penambahan section, atau update ringan lainnya, tinggal lanjut diskusi lagi.</div>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -1222,20 +1202,10 @@
             <a class="btn btn-primary" href="https://wa.me/6287745694809" target="_blank" rel="noopener noreferrer">Chat via WhatsApp</a>
             <a class="btn btn-secondary" href="mailto:satuhalaman.page@gmail.com">Kirim Email</a>
           </div>
-
-          <p class="contact-note">Kalau nanti mau ditambah form, Instagram, atau tombol booking, section ini sudah siap jadi area CTA utama.</p>
-
-          <div class="contact-image">
-            <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Diskusi project website bisnis" />
-          </div>
         </div>
 
         <aside class="contact-side reveal">
-          <div class="contact-side-card">
-            <h3 class="contact-side-title">Kenapa section kontak dibuat lebih penuh?</h3>
-            <p class="contact-side-text">Supaya penutup halaman tetap terasa premium, tidak kosong, dan tetap punya daya dorong buat ajak visitor lanjut kontak.</p>
-          </div>
-
+    
           <div class="contact-stat-grid">
             <div class="contact-stat">
               <strong>10 Menit</strong>
