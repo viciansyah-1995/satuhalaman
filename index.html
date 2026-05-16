@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SatuHalaman — Landing Page Bisnis</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23bf5b2c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Poppins, Arial, sans-serif' font-size='26' font-weight='700' fill='white'%3ESH%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" type="image/jpeg" href="./assets/logo-satuhalaman.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -131,22 +131,25 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.03em;
     }
 
     .brand-mark {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: var(--primary);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: #fff;
+      flex-shrink: 0;
+    }
+
+    .brand-mark img {
+      height: 100%;
+      object-fit: cover;
     }
 
     .nav-links {
@@ -755,7 +758,7 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a href="#top" class="brand">
-        <span class="brand-mark">SH</span>
+        <span class="brand-mark"><img src="./assets/logo-satuhalaman.jpg" alt="Logo SatuHalaman" /></span>
         <span>SatuHalaman</span>
       </a>
 
@@ -802,7 +805,7 @@
 
           <div class="hero-visual">
             <div class="hero-image">
-              <img src="https://picsum.photos/900/1100?random=11" alt="Preview website bisnis" />
+              <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Preview landing page dan workflow website bisnis" />
             </div>
             <div class="hero-mini">
               <div class="mini-card">
@@ -1042,7 +1045,7 @@
           <p class="contact-note">Kalau nanti mau ditambah form, Instagram, atau tombol booking, section ini sudah siap jadi area CTA utama.</p>
 
           <div class="contact-image">
-            <img src="https://picsum.photos/1200/600?random=20" alt="Dummy image kontak" />
+            <img src="https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Diskusi project website bisnis" />
           </div>
         </div>
 
