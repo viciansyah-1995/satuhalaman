@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SatuHalaman — Landing Page Bisnis</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23bf5b2c'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Poppins, Arial, sans-serif' font-size='26' font-weight='700' fill='white'%3ESH%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -645,11 +646,49 @@
       color: #fff;
     }
 
+    .footer-copy {
+      font-size: 14px;
+      color: rgba(255,255,255,0.62);
+      margin-top: 6px;
+    }
+
     .footer-links {
       display: flex;
       flex-wrap: wrap;
       gap: 18px;
       font-size: 14px;
+    }
+
+    .wa-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 30;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 18px 40px rgba(37, 211, 102, 0.28);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .wa-float:hover {
+      background: #1fb85a;
+    }
+
+    .wa-float-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.16);
+      font-size: 18px;
+      font-weight: 700;
     }
 
     .reveal {
@@ -799,7 +838,7 @@
         <div class="portfolio-grid reveal" id="portfolio-grid">
           <article class="portfolio-card" data-cat="kuliner">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=1" alt="Dummy project kuliner" />
+              <img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website bisnis untuk kedai kopi" />
               <span class="portfolio-label">Landing Page</span>
             </div>
             <div class="portfolio-content">
@@ -811,7 +850,7 @@
 
           <article class="portfolio-card" data-cat="fashion">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=2" alt="Dummy project fashion" />
+              <img src="https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website brand fashion lokal" />
               <span class="portfolio-label">Website Brand</span>
             </div>
             <div class="portfolio-content">
@@ -823,7 +862,7 @@
 
           <article class="portfolio-card" data-cat="kuliner">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=3" alt="Dummy project catering" />
+              <img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website catering dan makanan" />
               <span class="portfolio-label">Promo Catering</span>
             </div>
             <div class="portfolio-content">
@@ -835,7 +874,7 @@
 
           <article class="portfolio-card" data-cat="jasa">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=4" alt="Dummy project jasa" />
+              <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website company profile jasa profesional" />
               <span class="portfolio-label">Profil Bisnis</span>
             </div>
             <div class="portfolio-content">
@@ -847,7 +886,7 @@
 
           <article class="portfolio-card" data-cat="event">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=5" alt="Dummy project event" />
+              <img src="https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website event dan registrasi" />
               <span class="portfolio-label">Event Page</span>
             </div>
             <div class="portfolio-content">
@@ -859,7 +898,7 @@
 
           <article class="portfolio-card" data-cat="fashion">
             <div class="portfolio-thumb">
-              <img src="https://picsum.photos/800/600?random=6" alt="Dummy project skincare" />
+              <img src="https://images.pexels.com/photos/6621468/pexels-photo-6621468.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Website produk beauty dan skincare" />
               <span class="portfolio-label">Catalog Page</span>
             </div>
             <div class="portfolio-content">
@@ -990,14 +1029,14 @@
           <p class="contact-muted">Section kontak aku bikin lebih panjang di tampilan website biar penutup halaman terasa lebih kuat. Jadi bagian bawah tidak pendek dan tetap punya bobot visual yang pas.</p>
 
           <ul class="contact-list">
-            <li><strong>WhatsApp</strong><br />+62 812-3456-7890</li>
-            <li><strong>Email</strong><br />halo@satuhalaman.id</li>
+            <li><strong>WhatsApp</strong><br />087745694809</li>
+            <li><strong>Email</strong><br />satuhalaman.page@gmail.com</li>
             <li><strong>Layanan</strong><br />Landing page, website bisnis, dan halaman campaign</li>
           </ul>
 
           <div class="contact-cta">
-            <a class="btn btn-primary" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">Chat via WhatsApp</a>
-            <a class="btn btn-secondary" href="mailto:halo@satuhalaman.id">Kirim Email</a>
+            <a class="btn btn-primary" href="https://wa.me/6287745694809" target="_blank" rel="noopener noreferrer">Chat via WhatsApp</a>
+            <a class="btn btn-secondary" href="mailto:satuhalaman.page@gmail.com">Kirim Email</a>
           </div>
 
           <p class="contact-note">Kalau nanti mau ditambah form, Instagram, atau tombol booking, section ini sudah siap jadi area CTA utama.</p>
@@ -1047,6 +1086,7 @@
       <div>
         <div class="footer-brand">SatuHalaman</div>
         <div>Website bisnis yang rapi, cepat tayang, dan siap dipakai jualan.</div>
+        <div class="footer-copy">© <span id="current-year"></span> SatuHalaman. All rights reserved.</div>
       </div>
 
       <div class="footer-links">
@@ -1057,6 +1097,11 @@
       </div>
     </div>
   </footer>
+
+  <a class="wa-float" href="https://wa.me/6287745694809" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp SatuHalaman">
+    <span class="wa-float-icon">✆</span>
+    <span>Chat WhatsApp</span>
+  </a>
 
   <script>
     const observer = new IntersectionObserver((entries) => {
@@ -1091,6 +1136,8 @@
     function scrollToContact() {
       document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
     }
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
