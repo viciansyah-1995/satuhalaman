@@ -434,18 +434,99 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: 1fr;
       gap: 24px;
       align-items: start;
+      max-width: 720px;
     }
 
-    .contact-card,
-    .form-card {
+    .contact-card {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 24px;
       padding: 28px;
     }
+
+    .contact-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-cta .btn-secondary {
+      border-color: rgba(255,255,255,0.14);
+      color: #fff;
+    }
+
+    .contact-cta .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .contact-cta .btn-primary {
+      background: #fff;
+      color: var(--dark);
+    }
+
+    .contact-cta .btn-primary:hover {
+      background: #f1f1f1;
+    }
+
+    .contact-note {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    .contact-image {
+      margin-top: 24px;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      aspect-ratio: 16 / 8;
+    }
+
+    .contact-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .form-card {
+      display: none;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .form-row label {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      outline: none;
+    }
+
+    .form-input::placeholder { color: rgba(255,255,255,0.4); }
+    .form-input:focus { border-color: #ffb18a; }
+    textarea.form-input { min-height: 120px; resize: vertical; }
 
     .contact-card p,
     .contact-card li,
@@ -794,49 +875,23 @@
         <div class="contact-card reveal">
           <span class="eyebrow">Kontak</span>
           <h2 class="title" style="color:#fff; margin-top:10px;">Punya ide website? Gas diskusi.</h2>
-          <p class="contact-muted">Isi form singkat di samping. Tujuannya biar brief awal lebih rapi dan kita bisa langsung bahas kebutuhan utama bisnis kamu.</p>
+          <p class="contact-muted">Bagian form bawah sudah aku take out. Jadi section penutup sekarang lebih clean, fokus ke call to action dan info kontak utama.</p>
           <ul class="contact-list">
             <li><strong>WhatsApp</strong><br />+62 812-3456-7890</li>
             <li><strong>Email</strong><br />halo@satuhalaman.id</li>
             <li><strong>Layanan</strong><br />Landing page, website bisnis, dan halaman campaign</li>
           </ul>
-        </div>
 
-        <div class="form-card reveal">
-          <div class="form-grid">
-            <div class="form-row">
-              <label for="nama">Nama</label>
-              <input id="nama" class="form-input" type="text" placeholder="Nama kamu" />
-            </div>
-            <div class="form-row">
-              <label for="whatsapp">WhatsApp</label>
-              <input id="whatsapp" class="form-input" type="text" placeholder="08xxxxxxxxxx" />
-            </div>
+          <div class="contact-cta">
+            <a class="btn btn-primary" href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">Chat via WhatsApp</a>
+            <a class="btn btn-secondary" href="mailto:halo@satuhalaman.id">Kirim Email</a>
           </div>
 
-          <div class="form-row">
-            <label for="brand">Nama bisnis / brand</label>
-            <input id="brand" class="form-input" type="text" placeholder="Nama usaha kamu" />
-          </div>
+          <p class="contact-note">Bisa nanti ditambah tombol ke Instagram, form modal, atau direct booking kalau dibutuhin.</p>
 
-          <div class="form-row">
-            <label for="paket">Paket yang diminati</label>
-            <select id="paket" class="form-input">
-              <option value="">Pilih paket</option>
-              <option>Landing Page</option>
-              <option>Website Bisnis</option>
-              <option>Project Khusus</option>
-              <option>Mau konsultasi dulu</option>
-            </select>
+          <div class="contact-image">
+            <img src="https://picsum.photos/1200/600?random=20" alt="Dummy image kontak" />
           </div>
-
-          <div class="form-row">
-            <label for="catatan">Ceritakan kebutuhan singkat</label>
-            <textarea id="catatan" class="form-input" placeholder="Contoh: butuh landing page untuk promosi jasa interior, target audience rumah tangga dan kantor..."></textarea>
-          </div>
-
-          <button class="btn btn-primary" style="width:100%" onclick="handleSubmit(this)">Kirim & Mulai Konsultasi</button>
-          <p class="form-note">Form ini masih dummy. Nanti bisa disambungkan ke WhatsApp, email, Google Sheets, atau backend sendiri.</p>
         </div>
       </div>
     </section>
@@ -876,11 +931,6 @@
       document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
     }
 
-    function handleSubmit(button) {
-      button.textContent = 'Terkirim! Nanti tinggal sambungkan ke backend.';
-      button.disabled = true;
-      button.style.background = '#2f8f57';
-    }
   </script>
 </body>
 </html>
